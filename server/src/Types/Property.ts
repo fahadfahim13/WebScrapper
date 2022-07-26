@@ -14,3 +14,7 @@ export interface PropertyAttributes {
 export interface Property extends PropertyAttributes {
     id: number | string;
 }
+
+export interface PropertyDetails extends PropertyAttributes {
+    link: string;
+}

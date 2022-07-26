@@ -29,7 +29,7 @@ let server: http.Server;
 let dbClient: Sequelize | undefined;
 const startServer = async () => {
   try {
-    dbClient = await connection.sync();
+    // dbClient = await connection.sync();
     server = app.listen(PORT, (): void => {
       console.log(`Connected successfully on port ${PORT}`);
     });

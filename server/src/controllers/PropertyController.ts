@@ -10,7 +10,7 @@ export default class PropertyController {
   constructor(public propertyService: PropertyService) {}
 
   createProperty = asyncWrapper(async (req: Request) => {
-    const { property } = req.body;
+    const property = req.body;
     const response = await this.propertyService.createProperty(property);
     return new SuccessResponse(response);
   });
@@ -33,7 +33,7 @@ export default class PropertyController {
   });
 
   getPropertyDetails = asyncWrapper(async (req: Request) => {
-    const {id} = req.body;
+    const { id } = req.body;
     const response = await this.propertyService.getSingleProperty(id);
     return new SuccessResponse(response);
   });
