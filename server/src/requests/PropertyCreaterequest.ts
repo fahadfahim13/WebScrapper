@@ -5,30 +5,30 @@ export class PropertyCreateRequest {
   @IsString()
   name: string;
 
-  @IsNotEmpty()
+  @IsString()
   city: string;
 
-  @IsNotEmpty()
+  @IsString()
   address: string;
 
-  @IsNotEmpty()
+  @IsString()
   zip: string;
 
-  @IsNotEmpty()
+  @IsString()
   county: string;
 
-  @IsNotEmpty()
+  @IsString()
   phone: string;
 
-  @IsNotEmpty()
+  @IsString()
   type: string;
 
-  @IsNotEmpty()
+  @IsString()
   capacity: string;
 
-  @IsNotEmpty()
+  @IsString()
   images: string;
 
-  @IsNotEmpty()
+  @IsString()
   map: string;
 }

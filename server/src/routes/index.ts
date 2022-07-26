@@ -1,6 +1,7 @@
 import express from 'express';
 import authRoute from './AuthRoute';
 import propertyRoute from './PropertyRoute';
+import scrapperRoute from './ScrapperRoutes';
 
 const router = express.Router();
 
@@ -12,6 +13,10 @@ const allRoutes = [
   {
     path: '/property',
     route: propertyRoute,
+  },
+  {
+    path: '/scrapper',
+    route: scrapperRoute,
   },
 ];
 

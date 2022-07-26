@@ -11,9 +11,19 @@
             "hash": "5de2b707a9e72dcc63f779f6a516c769"
         },
         {
-            "date": 1658819102104,
-            "name": "logs/http-07-26-07-2022.log",
-            "hash": "ac2cdf6a5142536b27fefa719f92dfaa"
+            "date": 1658843460700,
+            "name": "logs\\http-19-26-07-2022.log",
+            "hash": "adcb8d847352d2e44082701735e2a6b1"
+        },
+        {
+            "date": 1658844177627,
+            "name": "logs\\http-20-26-07-2022.log",
+            "hash": "dde831b4445dee5b1a3e917f440c23e2"
+        },
+        {
+            "date": 1658844394958,
+            "name": "logs/http-14-26-07-2022.log",
+            "hash": "d8a3b4a265322882770d75f439870e70"
         }
     ],
     "hashType": "md5"
