@@ -1,19 +1,22 @@
 import express from 'express';
-import { SignInRequest } from '../requests/SignInRequest';
+import { PropertySearchRequest } from '../requests/PropertySearchRequest';
+import { PropertyCreateRequest } from '../requests/PropertyCreaterequest';
 import RequestValidator from '../middlewares/RequestValidator';
-import { SignUpRequest } from '../requests/SignUpRequest';
 import { Container } from 'typedi';
-import AuthController from '../controllers/AuthController';
+import PropertyController from '../controllers/PropertyController';
+
 
 const router = express.Router();
 
 /**
  * We are using TypeDI to get the UserService instance from our dependency container
  */
-const authController = Container.get(AuthController);
+const propertyController = Container.get(PropertyController);
 
-router.post('/florida', RequestValidator.validate(SignUpRequest), authController.signUp);
-router.post('/sign-in', RequestValidator.validate(SignInRequest), authController.signIn);
-router.get('/users', authController.getAllUsers);
+router.post('/search', RequestValidator.validate(PropertySearchRequest), propertyController.searchProperties);
+router.post('/create-property', RequestValidator.validate(PropertyCreateRequest), propertyController.createProperty);
+router.get('/properties', propertyController.getAllProperties);
+
+router.get('/properties/:id', propertyController.getPropertyDetails);
 
 export default router;
