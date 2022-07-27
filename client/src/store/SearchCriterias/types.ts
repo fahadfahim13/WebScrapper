@@ -1,23 +1,22 @@
+import { Option } from "components/SelectComponent/types";
+import { PropertyOption } from "shared/constants";
 import { SEARCH } from "uicontainers/SearchInputContainer/types";
 
 export interface Inputs {
     [SEARCH.TEXT]: string;
-    [SEARCH.REGION]: string;
-    [SEARCH.URL]: string;
+    [SEARCH.OPTION]: PropertyOption;
   }
 
   export type InputTypes =
   | SEARCH.TEXT
-  | SEARCH.REGION
-  | SEARCH.URL;
+  | SEARCH.OPTION;
 
 export interface InputChangeAction {
-  key: InputTypes;
+  key: SEARCH.TEXT;
   value: string;
 }
 
-export interface StateChangeAction {
-  [SEARCH.TEXT]: string;
-    [SEARCH.REGION]: string;
-    [SEARCH.URL]: string;
+export interface OptionChangeAction {
+  key: SEARCH.OPTION;
+  value: PropertyOption;
 }

@@ -7,7 +7,7 @@ import SelectComponent from 'components/SelectComponent';
 import useSearchInputs from './hook';
 
 const SearchInputContainer = () => {
-  const { changeRegions, handleChange, search, searchText, searchUrl} = useSearchInputs();
+  const { changeRegions, handleChange, search, searchText} = useSearchInputs();
   
   return (
     <Grid container spacing={2}>
@@ -15,7 +15,6 @@ const SearchInputContainer = () => {
         <SelectComponent 
           options={REGION_SELECT_OPTIONS} 
           label={'Select Region: '} 
-          value={REGION_SELECT_OPTIONS[searchUrl]} 
           handleChange={changeRegions} 
         />
       </Grid>
@@ -25,7 +24,7 @@ const SearchInputContainer = () => {
           name={SEARCH.TEXT} 
           label={'Search Text'}
           value={searchText} 
-          onChange={(e) => handleChange(e, SEARCH.TEXT)} 
+          onChange={(e) => handleChange(e)} 
         />
       </Grid>
       <Grid item xs={6}></Grid>

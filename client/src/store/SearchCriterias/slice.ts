@@ -1,13 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { InputChangeAction, StateChangeAction, Inputs } from './types';
+import { Inputs } from './types';
 import { SEARCH } from 'uicontainers/SearchInputContainer/types';
-import { REGION_SELECT_OPTIONS } from 'shared/constants';
+import { PropertyOption, REGION_SELECT_OPTIONS } from 'shared/constants';
 
 const initialState: Inputs = {
   [SEARCH.TEXT]: '',
-  [SEARCH.REGION]: '',
-  [SEARCH.URL]: REGION_SELECT_OPTIONS[0].value
+  [SEARCH.OPTION]: REGION_SELECT_OPTIONS[0]
 };
 
 export const searchCriteriaSlice = createSlice({
@@ -15,18 +14,15 @@ export const searchCriteriaSlice = createSlice({
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
-    updateSearch: (state, action: PayloadAction<InputChangeAction>) => {
-      state[action.payload.key] = action.payload.value;
+    updateSearch: (state, action: PayloadAction<string>) => {
+      state[SEARCH.TEXT] = action.payload;
     },
-    updateState: (state, action: PayloadAction<StateChangeAction>) => {
-      state[SEARCH.TEXT] = action.payload[SEARCH.TEXT];
-      state[SEARCH.REGION] = action.payload[SEARCH.REGION];
-      state[SEARCH.URL] = action.payload[SEARCH.URL];
+    updateOption: (state, action: PayloadAction<PropertyOption>) => {
+      state[SEARCH.OPTION] = action.payload;
     },
     clearState: (state) => {
       state[SEARCH.TEXT] = '';
-      state[SEARCH.REGION] = '';
-      state[SEARCH.URL] = '';
+      state[SEARCH.OPTION] = REGION_SELECT_OPTIONS[0];
     }
   }
 });

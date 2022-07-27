@@ -1,19 +1,18 @@
 import { MenuItem, Select } from '@mui/material'
-import {Props} from './types';
+import { Props, Option} from './types';
 
 const SelectComponent = (props: Props) => {
-  const { options, handleChange, value, label='' } = props;
+  const { options, handleChange, label='' } = props;
 
-  console.log(options)
   return (
     <Select
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
-          value={value.toString()}
+          defaultValue='0'
           onChange={handleChange}
           label={label}
         >
-            {options.map((option) => <MenuItem value={option.id}>{option.text}</MenuItem>)}
+            {options.map(({id, text}: Option) => <MenuItem key={id} value={id}>{text}</MenuItem>)}
         </Select>
   )
 }
