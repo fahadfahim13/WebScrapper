@@ -63,7 +63,7 @@ export default class ScrapperService {
 
     const ansArray = tdArrays.map((el) => this.convertTexasArrayIntoPropertydata(el));
 
-    for (let i = 0; i < tds.length; i++) {
+    for (let i = 0; i < links.length; i++) {
         const link = links[i];
         ansArray[i] = {
             ...ansArray[i],
