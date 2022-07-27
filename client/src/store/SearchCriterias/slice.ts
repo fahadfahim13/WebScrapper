@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { InputChangeAction, Inputs } from './types';
+import { InputChangeAction, StateChangeAction, Inputs } from './types';
 import { SEARCH } from 'uicontainers/SearchInputContainer/types';
 import { REGION_SELECT_OPTIONS } from 'shared/constants';
 
@@ -17,6 +17,11 @@ export const searchCriteriaSlice = createSlice({
   reducers: {
     updateSearch: (state, action: PayloadAction<InputChangeAction>) => {
       state[action.payload.key] = action.payload.value;
+    },
+    updateState: (state, action: PayloadAction<StateChangeAction>) => {
+      state[SEARCH.TEXT] = action.payload[SEARCH.TEXT];
+      state[SEARCH.REGION] = action.payload[SEARCH.REGION];
+      state[SEARCH.URL] = action.payload[SEARCH.URL];
     },
     clearState: (state) => {
       state[SEARCH.TEXT] = '';
