@@ -13,7 +13,7 @@ import { Sequelize } from 'sequelize/types';
 import connection from './services/SequelizeClient';
 
 const app: Application = express();
-const PORT = Config.port || 4000;
+const PORT = Config.port || 5555;
 
 app.use(cors());
 app.use(bodyParser.json());
