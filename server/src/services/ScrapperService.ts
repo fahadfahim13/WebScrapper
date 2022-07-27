@@ -166,7 +166,9 @@ export default class ScrapperService {
 
     await browser.close();
     return {
-        map: mapUrl ?? ''
+        map: mapUrl ?? '',
+        phone: '',
+        capacity: ''
     };
   };
 

@@ -15,3 +15,9 @@ export interface InputChangeAction {
   key: InputTypes;
   value: string;
 }
+
+export interface StateChangeAction {
+  [SEARCH.TEXT]: string;
+    [SEARCH.REGION]: string;
+    [SEARCH.URL]: string;
+}

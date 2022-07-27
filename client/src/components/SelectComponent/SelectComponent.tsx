@@ -3,15 +3,17 @@ import {Props} from './types';
 
 const SelectComponent = (props: Props) => {
   const { options, handleChange, value, label='' } = props;
+
+  console.log(options)
   return (
     <Select
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
-          value={value}
+          value={value.toString()}
           onChange={handleChange}
           label={label}
         >
-            {options.map((option) => <MenuItem value={option.value}>{option.text}</MenuItem>)}
+            {options.map((option) => <MenuItem value={option.id}>{option.text}</MenuItem>)}
         </Select>
   )
 }

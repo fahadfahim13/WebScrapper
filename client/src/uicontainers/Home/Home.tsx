@@ -3,6 +3,7 @@ import React from 'react';
 import { Box } from '@mui/material';
 import styles from './Home.module.scss';
 import SearchInputContainer from 'uicontainers/SearchInputContainer';
+import PropertyTableContainer from 'uicontainers/PropertyTableContainer/PropertyTableContainer';
 
 const Home = () => {
   return (
@@ -17,6 +18,8 @@ const Home = () => {
       className={styles.box}
     >
       <SearchInputContainer />
+      <hr />
+      <PropertyTableContainer />
     </Box>
   );
 };

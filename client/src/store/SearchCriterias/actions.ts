@@ -1,4 +1,4 @@
 import searchCriteriaSlice from './slice';
 
-const { updateSearch, clearState } = searchCriteriaSlice.actions;
-export { updateSearch, clearState };
+const { updateSearch, clearState, updateState } = searchCriteriaSlice.actions;
+export { updateSearch, clearState, updateState };

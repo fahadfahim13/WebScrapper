@@ -4,7 +4,7 @@ import formReducer from './FormInputs/reducer';
 import auditLogsReducer from './AuditLogs/reducer';
 import alertReducer from './Alert/reducer';
 import searchCriteriaReducer from './SearchCriterias/reducer';
-import searchProperyReducer from './SearchProperties/reducer'
+import searchProperyReducer from './SearchProperties/reducer';
 
 export const store = configureStore({
   reducer: {

@@ -1,53 +1,30 @@
-import React, { ChangeEvent } from 'react'
+import React from 'react'
 import InputField from 'components/InputField';
-import { Button, Grid, SelectChangeEvent } from '@mui/material';
+import { Button, Grid,  } from '@mui/material';
 import { SEARCH } from './types';
-import { useAppDispatch, useAppSelector } from 'store/hooks';
-import { selectSearchCriterias } from 'store/SearchCriterias/selectors';
-import { InputChangeAction, InputTypes } from 'store/SearchCriterias/types';
-import { updateSearch } from 'store/SearchCriterias/actions';
-import SelectComponent from 'components/SelectComponent';
 import { REGION_SELECT_OPTIONS } from 'shared/constants';
-import { searchPropertyAsync } from 'store/SearchProperties/thunks';
+import SelectComponent from 'components/SelectComponent';
+import useSearchInputs from './hook';
 
 const SearchInputContainer = () => {
-  const dispatch = useAppDispatch();
-  const searchCriterias = useAppSelector(selectSearchCriterias);
-
-  const changeRegions = (e: SelectChangeEvent) => {
-    const payload: InputChangeAction = {
-        key: SEARCH.URL,
-        value: e.target.value,
-      };
-      dispatch(updateSearch(payload));
-  }
-
-  const handleChange = (
-    e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
-    key: InputTypes,
-  ) => {
-    const payload: InputChangeAction = {
-      key,
-      value: e.target.value,
-    };
-    dispatch(updateSearch(payload));
-  };
-
-  const search = () => {
-    dispatch(searchPropertyAsync({url: searchCriterias[SEARCH.URL], searchText: searchCriterias[SEARCH.TEXT]}));
-  }
-
+  const { changeRegions, handleChange, search, searchText, searchUrl} = useSearchInputs();
+  
   return (
     <Grid container spacing={2}>
-        <Grid item xs={12}>
-            <SelectComponent options={REGION_SELECT_OPTIONS} label={'Select Region: '} value={searchCriterias[SEARCH.URL]} handleChange={changeRegions} />
-        </Grid>
+      <Grid item xs={12}>
+        <SelectComponent 
+          options={REGION_SELECT_OPTIONS} 
+          label={'Select Region: '} 
+          value={REGION_SELECT_OPTIONS[searchUrl]} 
+          handleChange={changeRegions} 
+        />
+      </Grid>
       <Grid item xs={6}>
         <InputField 
           id={SEARCH.TEXT} 
           name={SEARCH.TEXT} 
           label={'Search Text'}
-          value={searchCriterias[SEARCH.TEXT]} 
+          value={searchText} 
           onChange={(e) => handleChange(e, SEARCH.TEXT)} 
         />
       </Grid>
