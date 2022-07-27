@@ -4,7 +4,7 @@ import { SEARCH } from './types';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { selectSearchCriterias } from 'store/SearchCriterias/selectors';
 import { updateSearch, updateOption } from 'store/SearchCriterias/actions';
-import { searchPropertyAsync } from 'store/SearchProperties/thunks';
+import { getPropertyDetailsAsync, searchPropertyAsync } from 'store/SearchProperties/thunks';
 import { REGION_SELECT_OPTIONS } from 'shared/constants';
 
 
@@ -30,8 +30,12 @@ const useSearchInputs = () => {
     dispatch(searchPropertyAsync({url: searchCriterias[SEARCH.OPTION].rootUrl, searchText: searchCriterias[SEARCH.TEXT]}));
   }
 
+  const getPropertyDetails = (id: number, detailsUrl: string) => {
+    dispatch(getPropertyDetailsAsync({id, apiUrl: searchCriterias[SEARCH.OPTION].detailsUrl, detailsUrl}));
+  }
+
   return {
-    changeRegions, search, handleChange, searchText: searchCriterias[SEARCH.TEXT], searchOption: searchCriterias[SEARCH.OPTION]
+    changeRegions, search, handleChange, searchText: searchCriterias[SEARCH.TEXT], searchOption: searchCriterias[SEARCH.OPTION], getPropertyDetails
   }
 }
 
