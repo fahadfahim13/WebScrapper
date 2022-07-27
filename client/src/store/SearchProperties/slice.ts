@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { searchPropertyAsync } from './thunks';
+import { getPropertyDetailsAsync, searchPropertyAsync } from './thunks';
 import { SearchPropertyState } from './types';
 
 const initialState: SearchPropertyState = {
@@ -28,7 +28,25 @@ export const searchPropertiesSlice = createSlice({
       .addCase(searchPropertyAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         state.data = action.payload.data;
-      });
+      })
+      .addCase(getPropertyDetailsAsync.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(getPropertyDetailsAsync.fulfilled, (state, action) => {
+        console.log(action.payload)
+        const data = action.payload.data.data
+        const originalData = state.data[action.payload.id];
+        const newData = {
+          ...originalData,
+          map: originalData.map !== ''? originalData.map: data.map,
+          phone: originalData.phone !== ''? originalData.phone: data.phone,
+          capacity: originalData.capacity !== ''? originalData.capacity: data.capacity,
+        }
+        const dataArray = state.data;
+        dataArray[action.payload.id] = newData
+        state.status = 'idle';
+        state.data = dataArray;
+      })
   },
 });
 

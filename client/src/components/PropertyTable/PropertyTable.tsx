@@ -3,7 +3,7 @@ import ActionButton from 'components/ActionButton';
 import { Props } from './types'
 
 const PropertyTable = (props: Props) => {
-  const { tableBody= [] } = props;
+  const { tableBody= [], getPropertyDetails } = props;
   return (
     <TableContainer component={Paper}>
 
@@ -21,7 +21,7 @@ const PropertyTable = (props: Props) => {
           </TableRow>
         </TableHead>
         <TableBody>
-            {tableBody.map((row) => 
+            {tableBody.map((row, idx) => 
             <TableRow>
                 <TableCell>{row.name}</TableCell>
                 <TableCell>{row.address}</TableCell>
@@ -31,7 +31,7 @@ const PropertyTable = (props: Props) => {
                 <TableCell>{row.type}</TableCell>
                 <TableCell>{row.zip}</TableCell>
                 <TableCell>{row.capacity}</TableCell>
-                <TableCell> <ActionButton value='View Details' onClick={() => console.log(row.link)} /> </TableCell>
+                <TableCell> <ActionButton value='View Details' onClick={() => getPropertyDetails(idx, row.link)} /> </TableCell>
             </TableRow>)}
         </TableBody>
 

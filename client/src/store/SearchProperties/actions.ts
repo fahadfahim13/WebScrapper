@@ -1,3 +1,3 @@
-import { searchPropertyAsync } from 'store/SearchProperties/thunks';
+import { searchPropertyAsync, getPropertyDetailsAsync } from 'store/SearchProperties/thunks';
 
-export { searchPropertyAsync };
+export { searchPropertyAsync, getPropertyDetailsAsync };
